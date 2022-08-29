@@ -24,13 +24,16 @@
   <% for (const story of stories) { %>
       <p><a href="/story/<%= story.id %>"><button>This will be a pretty picture</button></a><br>
       <!-- book title -->
-      <%= story.title %><br>
+      <%= story.title %>
+      <br>
       <!-- book completion status -->
       <% if (story.completed === true) { %>
         Status: Completed
       <% } else { %>
         Status: Unfinished
-      <% } %></p>
+      <% } %>
+      <form method="POST" action="/my-stories/<%= story.id %>/delete"><button>Delete</button></form>
+    </p>
   <% } %>
   <!-- DOUBLE CHECK THIS WORKS WHEN ZARINA IS DONE -->
   <p>
