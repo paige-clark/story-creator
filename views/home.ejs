@@ -27,7 +27,7 @@
       <!-- book title -->
       <p><%= JSON.stringify(story.title) %></p>
       <!-- book completion status -->
-      <% if (JSON.stringify(story.completed) === 'true') { %>
+      <% if (story.completed === true) { %>
         <p>Status: Completed</p>
       <% } else { %>
         <p>Status: Unfinished</p>
