@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <h1>A Collaborative Story Platform.</h1>
+  <!-- loop through the results from stories query -->
+  <% for (const story of stories) { %>
+    <div class="book-display">
+      <!-- UPDATE THIS LINE WHEN FATIMA HAS MADE STORY PAGES -->
+      <a href="/story/<%= story.id %>"><button>This will be a pretty picture</button></a>
+      <!-- book title -->
+      <p><%= JSON.stringify(story.title) %></p>
+      <!-- book completion status -->
+      <% if (JSON.stringify(story.completed) === 'true') { %>
+        <p>Status: Completed</p>
+      <% } else { %>
+        <p>Status: Unfinished</p>
+      <% } %>
+    </div>
+  <% } %>
+</body>
+
+</html>
