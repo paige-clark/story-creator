@@ -1,18 +1,88 @@
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+// brand colours
+$ibm-plex-mono: 'IBM Plex Mono', monospace;
+$brand-green: #3EAE67;
+$brand-blue: #406FE1;
+$brand-red: #D24E32;
+$brand-yellow: #F4A041;
+
+// font sizes
+$large-text: 34px;
+$regular-text: 16px;
+
+
+.brand-green {
+  color: $brand-green;
+}
+
+.brand-blue {
+  color: $brand-blue;
+}
+
+.brand-red {
+  color: $brand-red;
+}
+
+.brand-yellow {
+  color: $brand-yellow;
+}
+
+body {
+  width: 100%;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // // min-height: 100vh;
+  font-family: $ibm-plex-mono;
+  font-size: $regular-text;
+  background: #F8EFDF;
+  // background: linear-gradient(
+  //   227deg,
+  //   rgba(163, 208, 219, 1) 0%,
+  //   rgba(163, 176, 219, 1) 20%,
+  //   rgba(163, 173, 219, 1) 34%,
+  //   rgba(163, 219, 208, 1) 59%,
+  //   rgba(163, 208, 219, 1) 74%,
+  //   rgba(163, 208, 219, 1) 100%
+  // );
+}
+
+h1 {
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: $large-text;
+}
+
+nav {
+  display: flex;
+  padding-top: 2rem;
+  background-color: aquamarine;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  border-bottom: 1px solid black;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: $large-text;
+  margin-left: 20%;
+}
+
+nav ol {
+  margin-right: 4rem;
+  list-style-type: none;
+  // padding-left: 0;
+}
+
+nav ol li {
+  display: inline;
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
 }
