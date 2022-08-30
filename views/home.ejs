@@ -18,11 +18,13 @@
 </head>
 
 <body>
+  <div class="body-container">
   <%- include('partials/_header') %>
-  <h1>A Collaborative Story Platform.</h1>
+  <h1>A Collaborative<br>Story Platform.</h1>
   <!-- loop through the results from stories query -->
+  <div class="bookshelf">
   <% for (const story of stories) { %>
-    <div class="book-display">
+    <div>
       <!-- UPDATE THIS LINE WHEN FATIMA HAS MADE STORY PAGES -->
       <p><a href="/story/<%= story.id %>"><button>This will be a pretty picture</button></a><br>
       <!-- book title -->
@@ -35,6 +37,8 @@
       <% } %></p>
     </div>
   <% } %>
+  </div>
+  </div>
 </body>
 
 </html>

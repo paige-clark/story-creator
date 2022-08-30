@@ -6,6 +6,7 @@ $brand-green: #3EAE67;
 $brand-blue: #406FE1;
 $brand-red: #D24E32;
 $brand-yellow: #F4A041;
+$background: #f8efdf;
 
 // font sizes
 $large-text: 34px;
@@ -29,15 +30,18 @@ $regular-text: 16px;
 }
 
 body {
-  width: 100%;
+
   // display: flex;
   // flex-direction: column;
   // justify-content: center;
   // align-items: center;
   // // min-height: 100vh;
+
+  // justify-content: center;
   font-family: $ibm-plex-mono;
   font-size: $regular-text;
-  background: #F8EFDF;
+  background-color: $background;
+
   // background: linear-gradient(
   //   227deg,
   //   rgba(163, 208, 219, 1) 0%,
@@ -47,42 +51,81 @@ body {
   //   rgba(163, 208, 219, 1) 74%,
   //   rgba(163, 208, 219, 1) 100%
   // );
+  padding-top: 3.3rem;
+}
+
+.body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $background;
 }
 
 h1 {
   font-weight: normal;
   text-transform: uppercase;
   font-size: $large-text;
+  margin-bottom: 0px;
+  padding: 4rem;
 }
 
 nav {
   display: flex;
-  padding-top: 2rem;
-  background-color: aquamarine;
-  justify-content: space-between;
-  position: fixed;
   width: 100%;
+  position: fixed;
+  justify-content: center;
+  right: 0px;
+  left: 0px;
   top: 0px;
-  border-bottom: 1px solid black;
+  padding-top: 2rem;
+  background-color: $background;
+  a:link {
+    text-decoration: none;
+    color: black;
+  }
+  div {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $background;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+  }
+  ol {
+    list-style-type: none;
+    display: block;
+    li {
+      padding: 1rem;
+      padding-left: 40px;
+      padding-right: 40px;
+      display: inline;
+      border-left: 1px solid black;
+    }
+  }
 }
 
 .logo {
+  padding-left: 40px;
   font-weight: 700;
   font-size: $large-text;
-  margin-left: 20%;
 }
 
-nav ol {
-  margin-right: 4rem;
-  list-style-type: none;
-  // padding-left: 0;
-}
-
-nav ol li {
-  display: inline;
-}
-
-a:link {
-  text-decoration: none;
-  color: black;
+.bookshelf {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  justify-content: center;
+  gap: 5rem;
+  div {
+    min-width: 300px;
+    text-transform: uppercase;
+    p {
+      margin-top: 0px;
+    }
+  }
 }
