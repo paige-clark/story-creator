@@ -120,13 +120,17 @@ nav {
   flex-wrap: wrap;
   max-width: 1200px;
   justify-content: center;
-  gap: 5rem;
+  column-gap: 5rem;
+  row-gap: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .book-wrapper {
   min-width: 300px;
   text-transform: uppercase;
   p {
+    padding-left: 1rem;
     margin-top: 0px;
   }
 }

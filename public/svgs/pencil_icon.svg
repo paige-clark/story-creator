@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 165.51 57.35" style="enable-background:new 0 0 165.51 57.35;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st2{fill:#F4A041;}
+	.st3{font-family:'IBMPlexMono-Regular';}
+	.st4{font-size:16px;}
+</style>
+<polygon class="st0" points="33.07,0.5 0.76,28.68 33.07,56.85 "/>
+<polygon points="15.36,15.95 15.36,41.4 0.76,28.68 "/>
+<polyline class="st1" points="33.07,0.5 0.76,28.68 33.07,56.85 "/>
+<rect x="32.57" class="st2" width="122.2" height="57.35"/>
+<polygon class="st0" points="143.54,14.59 143.54,42.76 154.27,56.85 165.01,42.76 165.01,14.59 154.27,0.5 "/>
+<polygon points="148.82,21.52 148.82,35.83 154.27,42.99 159.73,35.83 159.73,21.52 154.27,14.36 "/>
+<text transform="matrix(1 0 0 1 35.7106 34.9382)" class="st3 st4">WRITE ENTRY</text>
+<path class="st1" d="M143.54,14.59"/>
+<path class="st1" d="M143.54,42.76"/>
+<polyline class="st1" points="154.27,0.5 165.01,14.59 165.01,42.76 154.27,56.85 "/>
+<line class="st1" x1="143.54" y1="14.59" x2="32.57" y2="14.59"/>
+<line class="st1" x1="143.54" y1="42.76" x2="32.57" y2="42.76"/>
+</svg>

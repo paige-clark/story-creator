@@ -20,15 +20,29 @@
 <body>
   <div class="body-container">
     <%- include('partials/_header') %>
+    <!-- <img src="/lib/svgs/pencil_icon.svg"> -->
     <h1>A Collaborative<br>Story Platform.</h1>
     <!-- loop through the results from stories query -->
       <div class="bookshelf">
       <% for (const story of stories) { %>
         <div class="book-wrapper">
           <!-- UPDATE THIS LINE WHEN FATIMA HAS MADE STORY PAGES -->
-          <p><a href="/story/<%= story.id %>"><button>This will be a pretty picture</button></a><br>
+          <a href="/story/<%= story.id %>">
+          <% if ((Number(story.published_at) + story.id) % 4 === 0) {%>
+          <img class="book-svg" src="/svgs/green_book.svg" alt="story"></a><br>
+          <% } %>
+          <% if ((Number(story.published_at) + story.id) % 4 === 1) {%>
+          <img class="book-svg" src="/svgs/blue_book.svg" alt="story"></a><br>
+          <% } %>
+          <% if ((Number(story.published_at) + story.id) % 4 === 2) {%>
+          <img class="book-svg" src="/svgs/red_book.svg" alt="story"></a><br>
+          <% } %>
+          <% if ((Number(story.published_at) + story.id) % 4 === 3) {%>
+          <img class="book-svg" src="/svgs/yellow_book.svg" alt="story"></a><br>
+          <% } %>
+          <p>
           <!-- book title -->
-          <%= story.title %><br>
+          Title: <%= story.title %><br>
           <!-- book completion status -->
           <% if (story.completed === true) { %>
           Status: Completed
