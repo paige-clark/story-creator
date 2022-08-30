@@ -23,11 +23,13 @@
   <%= story[0].story_title %>
   </h1>
   <%= story[0].initial_story %><br><br>
-  <%= JSON.stringify(story) %>
+
 
   <!-- if condition for if last story block is not complete -->
   <% if (story[story.length - 1].completed === false) { %>
-    the story is ongoing
+  <% for (const entry of story) { %>
+    <%- entry.entry_text %><%- entry.winning_entry %><br><br>
+  <% } %>
   <!-- if condition for if last story block is complete -->
   <% } else if (story[story.length - 1].completed === true) { %>
     the story is completed
