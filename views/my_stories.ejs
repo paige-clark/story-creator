@@ -42,7 +42,7 @@
 
       <div>
       <p class="book-description">
-      Title: <%= story.title %><br>
+      <%= story.title %><br>
       <!-- book completion status -->
       <% if (story.completed === true) { %>
         Status: Completed
@@ -50,13 +50,13 @@
         Status: Unfinished
       <% } %>
       </p>
-      <form class="delete-button" method="POST" action="/my-stories/<%= story.id %>/delete">X</form>
+      <form class="delete-button" method="POST" action="/my-stories/<%= story.id %>/delete"><button>X</button></form>
     </div>
     </div>
   <% } %>
   <!-- DOUBLE CHECK THIS WORKS WHEN ZARINA IS DONE -->
   <div class="book-wrapper">
-  <p><a href="/create"><button>This will be a pretty picture</button></a><br>
+  <p><a href="/create"><img class="pencil-svg" src="/svgs/pencil_icon.svg" alt="write-entry" width="200px"></a><br>
   Create New Story
   </p>
 </div>
