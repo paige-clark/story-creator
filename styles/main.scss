@@ -51,7 +51,7 @@ body {
   //   rgba(163, 208, 219, 1) 74%,
   //   rgba(163, 208, 219, 1) 100%
   // );
-  padding-top: 3.3rem;
+  padding-top: 3.5rem;
 }
 
 .body-container {
@@ -121,11 +121,12 @@ nav {
   max-width: 1200px;
   justify-content: center;
   gap: 5rem;
-  div {
-    min-width: 300px;
-    text-transform: uppercase;
-    p {
-      margin-top: 0px;
-    }
+}
+
+.book-wrapper {
+  min-width: 300px;
+  text-transform: uppercase;
+  p {
+    margin-top: 0px;
   }
 }

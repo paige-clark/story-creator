@@ -19,25 +19,25 @@
 
 <body>
   <div class="body-container">
-  <%- include('partials/_header') %>
-  <h1>A Collaborative<br>Story Platform.</h1>
-  <!-- loop through the results from stories query -->
-  <div class="bookshelf">
-  <% for (const story of stories) { %>
-    <div>
-      <!-- UPDATE THIS LINE WHEN FATIMA HAS MADE STORY PAGES -->
-      <p><a href="/story/<%= story.id %>"><button>This will be a pretty picture</button></a><br>
-      <!-- book title -->
-      <%= story.title %><br>
-      <!-- book completion status -->
-      <% if (story.completed === true) { %>
-        Status: Completed
-      <% } else { %>
-        Status: Unfinished
-      <% } %></p>
+    <%- include('partials/_header') %>
+    <h1>A Collaborative<br>Story Platform.</h1>
+    <!-- loop through the results from stories query -->
+      <div class="bookshelf">
+      <% for (const story of stories) { %>
+        <div class="book-wrapper">
+          <!-- UPDATE THIS LINE WHEN FATIMA HAS MADE STORY PAGES -->
+          <p><a href="/story/<%= story.id %>"><button>This will be a pretty picture</button></a><br>
+          <!-- book title -->
+          <%= story.title %><br>
+          <!-- book completion status -->
+          <% if (story.completed === true) { %>
+          Status: Completed
+          <% } else { %>
+          Status: Unfinished
+          <% } %></p>
+        </div>
+    <% } %>
     </div>
-  <% } %>
-  </div>
   </div>
 </body>
 
