@@ -34,6 +34,7 @@ const usersRoutes = require('./routes/users');
 const widgetsRoutes = require('./routes/widgets');
 const homeRoute = require('./routes/home');
 const myStories = require('./routes/my-stories');
+const createStory = require('./routes/create');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -44,6 +45,7 @@ app.use('/users', usersRoutes);
 app.use('/widgets', widgetsRoutes);
 app.use('/', homeRoute);
 app.use('/my-stories', myStories);
+app.use('/create', createStory);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
