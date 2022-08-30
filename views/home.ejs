@@ -29,18 +29,20 @@
           <!-- UPDATE THIS LINE WHEN FATIMA HAS MADE STORY PAGES -->
           <a href="/story/<%= story.id %>">
           <% if ((Number(story.published_at) + story.id) % 4 === 0) {%>
-          <img class="book-svg" src="/svgs/green_book.svg" alt="story"></a><br>
+          <img class="book-svg" src="/svgs/green_book.svg" alt="story"></a>
           <% } %>
           <% if ((Number(story.published_at) + story.id) % 4 === 1) {%>
-          <img class="book-svg" src="/svgs/blue_book.svg" alt="story"></a><br>
+          <img class="book-svg" src="/svgs/blue_book.svg" alt="story"></a>
           <% } %>
           <% if ((Number(story.published_at) + story.id) % 4 === 2) {%>
-          <img class="book-svg" src="/svgs/red_book.svg" alt="story"></a><br>
+          <img class="book-svg" src="/svgs/red_book.svg" alt="story"></a>
           <% } %>
           <% if ((Number(story.published_at) + story.id) % 4 === 3) {%>
-          <img class="book-svg" src="/svgs/yellow_book.svg" alt="story"></a><br>
+          <img class="book-svg" src="/svgs/yellow_book.svg" alt="story"></a>
           <% } %>
-          <p>
+
+          <div>
+          <p class="book-description">
           <!-- book title -->
           Title: <%= story.title %><br>
           <!-- book completion status -->
@@ -48,7 +50,10 @@
           Status: Completed
           <% } else { %>
           Status: Unfinished
-          <% } %></p>
+          <% } %>
+        </p>
+          </div>
+
         </div>
     <% } %>
     </div>

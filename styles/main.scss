@@ -127,10 +127,39 @@ nav {
 }
 
 .book-wrapper {
-  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
   text-transform: uppercase;
-  p {
-    padding-left: 1rem;
-    margin-top: 0px;
+  margin-bottom: 0px;
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    // align-content: flex-start;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    .book-description {
+      margin-top: 0px;
+    }
+    .delete-button {
+      color: $brand-red;
+      display: flex;
+      font-weight: 700;
+      cursor: pointer;
+    }
   }
+}
+
+.book-svg {
+  filter: drop-shadow(0px 0px 0px black);
+  transition: 0.15s ease-out;
+}
+
+.book-svg:hover {
+  filter: drop-shadow(4px 4px 0px black);
+  transition: 0.2s ease-out;
+  transform: translateY(-4px) translateX(-4px);
 }

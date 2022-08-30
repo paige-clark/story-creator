@@ -25,25 +25,40 @@
   <div class="bookshelf">
   <% for (const story of stories) { %>
     <div class="book-wrapper">
-      <p><a href="/story/<%= story.id %>"><button>This will be a pretty picture</button></a><br>
+        <a href="/story/<%= story.id %>">
+        <% if ((Number(story.published_at) + story.id) % 4 === 0) {%>
+        <img class="book-svg" src="/svgs/green_book.svg" alt="story"></a>
+        <% } %>
+        <% if ((Number(story.published_at) + story.id) % 4 === 1) {%>
+        <img class="book-svg" src="/svgs/blue_book.svg" alt="story"></a>
+        <% } %>
+        <% if ((Number(story.published_at) + story.id) % 4 === 2) {%>
+        <img class="book-svg" src="/svgs/red_book.svg" alt="story"></a>
+        <% } %>
+        <% if ((Number(story.published_at) + story.id) % 4 === 3) {%>
+        <img class="book-svg" src="/svgs/yellow_book.svg" alt="story"></a>
+        <% } %>
       <!-- book title -->
-      <%= story.title %>
-      <br>
+
+      <div>
+      <p class="book-description">
+      Title: <%= story.title %><br>
       <!-- book completion status -->
       <% if (story.completed === true) { %>
         Status: Completed
       <% } else { %>
         Status: Unfinished
       <% } %>
-      <form method="POST" action="/my-stories/<%= story.id %>/delete"><button>Delete</button></form>
-    </p>
+      </p>
+      <form class="delete-button" method="POST" action="/my-stories/<%= story.id %>/delete">X</form>
+    </div>
     </div>
   <% } %>
   <!-- DOUBLE CHECK THIS WORKS WHEN ZARINA IS DONE -->
   <div class="book-wrapper">
   <p><a href="/create"><button>This will be a pretty picture</button></a><br>
   Create New Story
-</p>
+  </p>
 </div>
 </div>
 </div>
