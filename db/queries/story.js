@@ -6,8 +6,9 @@ const getStoryInfo = (storyID) => {
          stories.title AS story_title,
          stories.initial_story,
          story_blocks.id AS story_block_id,
-         story_blocks.completed,
+         story_blocks.completed AS block_completed,
          story_entries.id AS entry_id,
+         story_entries.story_block_id AS entry_block,
          story_entries.entry_text,
          story_entries.selected AS winning_entry
   FROM stories
@@ -26,18 +27,16 @@ const getStoryInfo = (storyID) => {
     });
 };
 
-const continueStory = (storyID, storyBlockID, entryID) => {
-  const query = `
-  SELECT
-  FROM story_blocks
-  JOIN story_blocks
-    ON stories.id = story_blocks.story_id
-  LEFT JOIN story_entries
-    ON story_blocks.id = story_entries.story_block_id
-  WHERE stories.id = $1
-  ;`;
+// mark an entry as winning
+const winningEntry = (entryID) => {
 
-  const params = [storyID, storyBlockID];
+  const query = `
+  UPDATE story_entries
+  SET selected = TRUE
+  WHERE id = $1;
+  `;
+
+  const params = [entryID];
 
   return db.query(query, params)
     .then(data => {
@@ -45,4 +44,39 @@ const continueStory = (storyID, storyBlockID, entryID) => {
     });
 };
 
-module.exports = { getStoryInfo, continueStory };
+// mark a block as completed by its ID
+const completeBlock = (storyBlockID) => {
+
+  const query = `
+  UPDATE story_blocks
+  SET completed = TRUE
+  WHERE story_blocks.id = $1;
+  `;
+
+  const params = [storyBlockID];
+
+  return db.query(query, params)
+    .then(data => {
+      return data.rows;
+    });
+};
+
+// this creates a new story block using a storyID
+const newStoryBlock = (storyID) => {
+
+  const query = `
+  INSERT INTO
+  story_blocks (story_id)
+  VALUES
+  ($1);
+  `;
+
+  const params = [storyID];
+
+  return db.query(query, params)
+    .then(data => {
+      return data.rows;
+    });
+};
+
+module.exports = { getStoryInfo, winningEntry, completeBlock, newStoryBlock };

@@ -26,12 +26,21 @@
   <h1><%= story[0].story_title %></h1>
   <%= story[0].initial_story %><br><br>
 
-  <%- JSON.stringify(story[0].story_id) %>
+  <% for (const arrItem of story) { %>
+    <!-- <%- JSON.stringify(arrItem.block_completed) %> -->
+    <% if (arrItem.block_completed === true && arrItem.story_block_id === arrItem.entry_block && arrItem.winning_entry === true) { %>
+      <!-- check all story entries connected to the block_id and only show the ones that are true -->
+      <%- arrItem.entry_text %><br><br>
+    <% } %>
+  <% } %>
+
+  <!-- <%- JSON.stringify(story) %> -->
 
   <button>This will redirect to the make entry page</button><br><br>
 
+
   <!-- if condition for if last story block is not complete -->
-  <% if (story[story.length - 1].completed === false) { %>
+  <% if (story[story.length - 1].block_completed === false && story[story.length - 1].entry_id !== null) { %>
   <form method="POST" action="/story/<%= story[0].story_id %>/<%= story[story.length - 1].story_block_id %>/select-winner">
   <% for (const entry of story) { %>
     <fieldset>
@@ -46,8 +55,6 @@
   </form>
 
   <!-- if condition for if last story block is complete -->
-  <% } else if (story[story.length - 1].completed === true) { %>
-  the story is completed
   <% } %>
 
 
