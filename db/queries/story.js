@@ -5,6 +5,7 @@ const getStoryInfo = (storyID) => {
   SELECT stories.id AS story_id,
          stories.title AS story_title,
          stories.initial_story,
+         stories.completed AS story_completion_status,
          story_blocks.id AS story_block_id,
          story_blocks.completed AS block_completed,
          story_entries.id AS entry_id,
@@ -79,4 +80,20 @@ const newStoryBlock = (storyID) => {
     });
 };
 
-module.exports = { getStoryInfo, winningEntry, completeBlock, newStoryBlock };
+const endStory = (storyID) => {
+
+  const query = `
+  UPDATE stories
+  SET completed = TRUE
+  WHERE stories.id = $1;
+  `;
+
+  const params = [storyID];
+
+  return db.query(query, params)
+    .then(data => {
+      return data.rows;
+    });
+};
+
+module.exports = { getStoryInfo, winningEntry, completeBlock, newStoryBlock, endStory };

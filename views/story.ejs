@@ -34,7 +34,11 @@
     <% } %>
   <% } %>
 
-  <!-- <%- JSON.stringify(story) %> -->
+  <% if (!story[story.length - 1].story_completion_status) { %>
+
+
+
+  <%- JSON.stringify(story[story.length - 1].story_completion_status) %>
 
   <button>This will redirect to the make entry page</button><br><br>
 
@@ -55,6 +59,8 @@
   </form>
 
   <!-- if condition for if last story block is complete -->
+  <% } %>
+
   <% } %>
 
 

@@ -30,14 +30,25 @@ router.post('/:id/:block_id/select-winner', (req, res) => {
     //   .then(storyQueries.completeBlock(req.params.block_id))
     //   .then(storyQueries.newStoryBlock(req.params.id));
 
-    storyQueries.winningEntry(req.body.entry).then
+    // storyQueries.winningEntry(req.body.entry);
+    // storyQueries.completeBlock(req.params.block_id);
+    // storyQueries.newStoryBlock(req.params.id);
+    // return res.redirect(`/story/${req.params.id}`);
+
+    storyQueries.winningEntry(req.body.entry);
     storyQueries.completeBlock(req.params.block_id);
     storyQueries.newStoryBlock(req.params.id);
-
     return res.redirect(`/story/${req.params.id}`);
 
-  } else if (req.body.completion === 'true') {
+  }
+
+  if (req.body.completion === 'true') {
+    console.log('the story is done!')
     // call function to end story
+    storyQueries.winningEntry(req.body.entry);
+    storyQueries.completeBlock(req.params.block_id);
+    storyQueries.endStory(req.params.id);
+    return res.redirect(`/story/${req.params.id}`);
   }
 
 
