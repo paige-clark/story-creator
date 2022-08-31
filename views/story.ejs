@@ -47,9 +47,11 @@
   <% if (story[story.length - 1].block_completed === false && story[story.length - 1].entry_id !== null) { %>
   <form method="POST" action="/story/<%= story[0].story_id %>/<%= story[story.length - 1].story_block_id %>/select-winner">
   <% for (const entry of story) { %>
+    <% if (entry.entry_block === story[story.length - 1].story_block_id) { %>
     <fieldset>
     <label><input type="radio" name="entry" value="<%= entry.entry_id %>"> <%- entry.entry_text %><%- entry.winning_entry %><span><i class="fa-solid fa-heart hover-color fa-xs"></i></span><br></label>
     </fieldset>
+    <% } %>
   <% } %>
   <fieldset>
     <label><input type="radio" name="completion" value="false"> Continue story?<br></label>
