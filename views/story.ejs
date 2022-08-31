@@ -8,6 +8,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
+  <!-- linking font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
@@ -19,20 +22,32 @@
 
 <body>
   <%- include('partials/_header') %>
-  <h1>
-  <%= story[0].story_title %>
-  </h1>
+  <!-- initial story and title -->
+  <h1><%= story[0].story_title %></h1>
   <%= story[0].initial_story %><br><br>
 
+  <%- JSON.stringify(story[0].story_id) %>
+
+  <button>This will redirect to the make entry page</button><br><br>
 
   <!-- if condition for if last story block is not complete -->
   <% if (story[story.length - 1].completed === false) { %>
+  <form method="POST" action="/story/<%= story[0].story_id %>/<%= story[story.length - 1].story_block_id %>/select-winner">
   <% for (const entry of story) { %>
-    <%- entry.entry_text %><%- entry.winning_entry %><br><br>
+    <fieldset>
+    <label><input type="radio" name="entry" value="<%= entry.entry_id %>"> <%- entry.entry_text %><%- entry.winning_entry %><span><i class="fa-solid fa-heart hover-color fa-xs"></i></span><br></label>
+    </fieldset>
   <% } %>
+  <fieldset>
+    <label><input type="radio" name="completion" value="false"> Continue story?<br></label>
+    <label><input type="radio" name="completion" value="true"> End story here?<br></label>
+  </fieldset>
+  <button>SUBMIT</button>
+  </form>
+
   <!-- if condition for if last story block is complete -->
   <% } else if (story[story.length - 1].completed === true) { %>
-    the story is completed
+  the story is completed
   <% } %>
 
 

@@ -82,6 +82,7 @@ nav {
   top: 0px;
   padding-top: 2rem;
   background-color: $background;
+  z-index: 1;
   a:link {
     text-decoration: none;
     color: black;
@@ -156,11 +157,11 @@ nav {
 
 .book-svg {
   filter: drop-shadow(0px 0px 0px black);
-  transition: 0.15s ease-out;
+  transition: 0.1s ease-out;
 }
 
 .book-svg:hover {
-  filter: drop-shadow(4px 4px 0px black);
-  transition: 0.2s ease-out;
-  transform: translateY(-4px) translateX(-4px);
+  filter: drop-shadow(3px 3px 0px black);
+  transition: 0.1s ease-in;
+  transform: translateY(-3px) translateX(-3px);
 }

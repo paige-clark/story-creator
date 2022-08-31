@@ -1,15 +1,21 @@
 const db = require('../connection');
 
 const newStory = (title, initialStory) => {
+  // const query = `
+  // INSERT INTO
+  // stories (user_id, title, initial_story)
+  // VALUES
+  // ('1', $1, $2)
+  // ;`;
   const query = `
-  INSERT INTO
-  stories (user_id, title, initial_story)
-  VALUES
-  (
-  '1',
-  $1,
-  $2
-  );`;
+  WITH story_id AS
+    (
+    INSERT INTO stories (user_id, title, initial_story) VALUES ('1', $1, $2) RETURNING id
+    )
+    INSERT INTO story_blocks (story_id)
+      SELECT story_id.id
+      FROM story_id
+  ;`;
 
   const params = [title, initialStory];
 

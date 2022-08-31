@@ -12,4 +12,29 @@ router.get('/:id', (req, res) => {
   // res.render('story');
 });
 
+router.post('/:id/:block_id/select-winner', (req, res) => {
+  console.log(req.params.id);
+  console.log(req.params.block_id);
+  console.log(req.body.entry);
+  console.log(req.body.completion);
+  console.log(req.body);
+  if (req.body.completion === 'false') {
+    // call function to continue story
+    storyQueries.continueStory(req.params.id, req.params.block_id, req.body.entry);
+    return res.redirect("/req.params.id");
+
+  } else if (req.body.completion === 'true') {
+    // call function to end story
+  }
+
+  // return res.redirect("/req.params.id")
+  // storyQueries.getStoryInfo(req.params.id).then(data => {
+  //   const templateVars = { story: data };
+  //   return res.render('story', templateVars);
+  // })
+
+  // console.log(req.params.id);
+  // res.render('story');
+});
+
 module.exports = router;
