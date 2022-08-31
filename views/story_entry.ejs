@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Story</title>
+  <title>Entry</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -22,6 +22,12 @@
 
 <body>
   <%- include('partials/_header') %>
+  <h1>Write Entry</h1>
+  <form method="POST" action="/story/<%= story[0].story_id %>/<%= story[story.length - 1].story_block_id %>/entry/post">
+  <input type="text" name="entry" placeholder="Write your entry..."/>
+  <button>SUBMIT ENTRY</button><br><br>
+  </form>
+
   <!-- initial story and title -->
   <h1><%= story[0].story_title %></h1>
   <%= story[0].initial_story %><br><br>
@@ -34,37 +40,16 @@
     <% } %>
   <% } %>
 
-  <% if (!story[story.length - 1].story_completion_status) { %>
-
 
 
   <!-- <%- JSON.stringify(story[story.length - 1].story_completion_status) %> -->
 
-  <a href="/story/<%= story[0].story_id %>/<%= story[story.length - 1].story_block_id %>/entry"><img class="pencil-svg" src="/svgs/pencil_icon.svg" alt="story" width="150px"></a><br><br>
+
 
 
   <!-- if condition for if last story block is not complete -->
-  <% if (story[story.length - 1].block_completed === false && story[story.length - 1].entry_id !== null) { %>
-  <form method="POST" action="/story/<%= story[0].story_id %>/<%= story[story.length - 1].story_block_id %>/select-winner">
-  <% for (const entry of story) { %>
-    <fieldset>
-    <label><input type="radio" name="entry" value="<%= entry.entry_id %>"> <%- entry.entry_text %><%- entry.winning_entry %><span><i class="fa-solid fa-heart hover-color fa-xs"></i></span><br></label>
-    </fieldset>
-  <% } %>
-  <fieldset>
-    <label><input type="radio" name="completion" value="false"> Continue story?<br></label>
-    <label><input type="radio" name="completion" value="true"> End story here?<br></label>
-  </fieldset>
-  <button>SUBMIT</button>
-  </form>
-
-  <!-- if condition for if last story block is complete -->
-  <% } %>
-
-  <% } %>
 
 
 
 </body>
-
 </html>

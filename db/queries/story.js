@@ -96,4 +96,21 @@ const endStory = (storyID) => {
     });
 };
 
-module.exports = { getStoryInfo, winningEntry, completeBlock, newStoryBlock, endStory };
+const postEntry = (blockID, entryText) => {
+
+  const query = `
+  INSERT INTO
+  story_entries (user_id, story_block_id, entry_text)
+  VALUES
+  (1, $1, $2);
+  `;
+
+  const params = [blockID, entryText];
+
+  return db.query(query, params)
+    .then(data => {
+      return data.rows;
+    });
+};
+
+module.exports = { getStoryInfo, winningEntry, completeBlock, newStoryBlock, endStory, postEntry };
