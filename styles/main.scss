@@ -65,6 +65,7 @@ body {
   font-size: $regular-text;
   background-color: $background;
   padding-top: 3.5rem;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 h1 {
@@ -103,6 +104,9 @@ h1 {
     h1 {
       padding: 1.5rem;
     }
+    .end-message {
+      margin-top: -1rem;
+    }
     margin-bottom: 1rem;
   }
   .submissions-container {
@@ -111,9 +115,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     margin-top: 1.75rem;
-    background-color: #F4A041;
     form {
-      background-color: aquamarine;
       list-style: none;
       display: flex;
       flex-direction: column;
@@ -130,10 +132,8 @@ h1 {
       width: 90%;
       margin: 0;
       padding: 0;
-      background-color: #D24E32;
 
       li {
-        background-color: #406FE1;
         display: flex;
         flex-direction: column;
         word-wrap: break-word;
@@ -167,7 +167,12 @@ h1 {
            i:hover {
             color: $brand-red;
             transition: 0.1s ease-in;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
+           }
+           i:active {
+            color: $brand-red;
+            transition: 0.1s ease-in;
+            transform: translateY(2px);
            }
           }
         }
@@ -175,12 +180,12 @@ h1 {
     }
   }
   .entry-selector {
-    background-color: peachpuff;
     display: flex;
     flex-direction: row;
+    width: 100%;
+    margin-right: -20%;
 
     fieldset {
-      padding-left: 8rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -368,14 +373,54 @@ nav {
       margin-top: 0px;
     }
     .delete-button {
-      color: $brand-red;
-      display: flex;
+      color: $background;
+      padding: 0.35rem;
+      padding-top: 0rem;
+      padding-bottom: 0rem;
+
       font-weight: 700;
       cursor: pointer;
       font-size: 18px;
+      border: solid 1px $brand-red;
+      background-color: $brand-red;
+      border-radius: 8px;
+      transition: 0.1s ease-in;
     }
+    .delete-button:hover {
+      transition: 0.1s ease-in;
+      transform: translateY(-1px);
+     }
+     .delete-button:active {
+      transition: 0.1s ease-in;
+      transform: translateY(2px);
+     }
   }
 }
+
+.submit-button {
+  color: $background;
+
+  padding: 0.5rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+  // outline: 1px solid $brand-blue;
+  // outline-offset: 1px;
+  background-color: black;
+  border-radius: 8px;
+  transition: 0.1s ease-in;
+}
+.submit-button:hover {
+  transition: 0.1s ease-in;
+  background-color:$brand-green;
+  transform: translateY(-1px);
+ }
+ .submit-button:active {
+  transition: 0.1s ease-in;
+  transform: translateY(2px);
+ }
 
 .book-svg {
   filter: drop-shadow(0px 0px 0px black);

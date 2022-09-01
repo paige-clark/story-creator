@@ -36,7 +36,7 @@
   <% } %>
   <% } %>
   <% if (story[story.length - 1].story_completion_status) { %>
-    <h1>END</h1>
+    <h1 class="end-message">END</h1>
   <% } %>
   </div>
 
@@ -75,7 +75,7 @@
     <label><input type="radio" name="completion" value="false"> Continue story?<br></label>
     <label><input type="radio" name="completion" value="true"> End story here?<br></label>
     </fieldset>
-    <button>SUBMIT</button>
+    <button class="submit-button">SUBMIT</button>
     </form>
   <% } %>
 </ul>
