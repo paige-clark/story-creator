@@ -13,6 +13,10 @@ READR is an app that allows you collaborate with other users to create new stori
 ![erd](https://github.com/paige-clark/story-creator/blob/master/doc/erd.png?raw=true)
 ![userstories](https://github.com/paige-clark/story-creator/blob/master/doc/user_stories.png?raw=true)
 
+## Wireframe
+
+https://www.figma.com/proto/9T8iwKhGpLbgQGP26eJRmz/Untitled?node-id=10%3A388&starting-point-node-id=10%3A388&scaling=scale-down
+
 ## Getting Started
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
