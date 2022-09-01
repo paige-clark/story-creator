@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/new', (req, res) => {
-  // console.log(req.body);
+
   createNewStoryQuery.newStory(req.body.title, req.body.story);
   return res.redirect('/my-stories');
 });
