@@ -11,7 +11,8 @@ const getStoryInfo = (storyID) => {
          story_entries.id AS entry_id,
          story_entries.story_block_id AS entry_block,
          story_entries.entry_text,
-         story_entries.selected AS winning_entry
+         story_entries.selected AS winning_entry,
+         story_entries.upvote_counter
   FROM stories
   JOIN story_blocks
     ON stories.id = story_blocks.story_id
@@ -113,4 +114,35 @@ const postEntry = (blockID, entryText) => {
     });
 };
 
-module.exports = { getStoryInfo, winningEntry, completeBlock, newStoryBlock, endStory, postEntry };
+// refactor this by only getting the story entries for the required block
+const likeEntry = (entryID) => {
+
+  const query = `
+  UPDATE story_entries
+  SET upvote_counter = upvote_counter + 1
+  WHERE story_entries.id = $1
+  RETURNING upvote_counter;
+
+  `;
+
+  // WITH story_id AS
+  //   (
+  //   INSERT INTO stories (user_id, title, initial_story) VALUES ('1', $1, $2) RETURNING id
+  //   )
+  //   INSERT INTO story_blocks (story_id)
+  //     SELECT story_id.id
+  //     FROM story_id
+
+  const params = [entryID];
+
+  return db.query(query, params)
+    .then(data => {
+      return data.rows;
+    });
+
+};
+
+
+
+
+module.exports = { getStoryInfo, winningEntry, completeBlock, newStoryBlock, endStory, postEntry, likeEntry };

@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/users.js"></script>
+  <script defer src="/scripts/app.js"></script>
 </head>
 
 <body>
@@ -49,7 +49,9 @@
   <% for (const entry of story) { %>
     <% if (entry.entry_block === story[story.length - 1].story_block_id) { %>
     <fieldset>
-    <label><input type="radio" name="entry" value="<%= entry.entry_id %>"> <%- entry.entry_text %><%- entry.winning_entry %><span><i class="fa-solid fa-heart hover-color fa-xs"></i></span><br></label>
+    <label><input type="radio" name="entry" value="<%= entry.entry_id %>"> <%- entry.entry_text %></label>
+    <span id="like-counter"><%- entry.upvote_counter %></span>
+    <span id="like-post" data-id="<%= entry.entry_id %>"><i class="fa-solid fa-heart hover-color fa-xs"></i></span><br>
     </fieldset>
     <% } %>
   <% } %>
