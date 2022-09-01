@@ -1,14 +1,16 @@
 // // Client facing scripts here
 $(() => {
-  console.log($('#like-post').data('id'));
-  const entry_id = $('#like-post').data('id');
-  $('#like-post').on('click', () => {
-    $.ajax({
-      method: 'POST',
-      url: '/story/' + entry_id + '/like'
-    })
-    .done((response) => {
-      $('#like-counter').html(response.upvote_counter);
+  $('span#like-post').each(function() {
+    const element = $(this);
+    const entry_id = element.data('id');
+    element.on('click', () => {
+      $.ajax({
+        method: 'POST',
+        url: '/story/' + entry_id + '/like'
+      })
+      .done((response) => {
+        $('#like-counter' + entry_id).html(response.upvote_counter);
+      });
     });
   });
 });

@@ -71,7 +71,7 @@
     <% if (entry.entry_block === story[story.length - 1].story_block_id) { %>
     <li>
     <%- entry.entry_text %>
-    <span id="like-counter"><%- entry.upvote_counter %></span>
+    <span id="like-counter<%= entry.entry_id %>"><%- entry.upvote_counter %></span>
     <span id="like-post" data-id="<%= entry.entry_id %>"><i class="fa-solid fa-heart hover-color fa-sm"></i></span><br><br>
     </li>
     <% } %>
