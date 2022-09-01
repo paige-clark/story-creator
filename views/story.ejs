@@ -23,68 +23,80 @@
 <body>
   <div class="story-container">
   <%- include('partials/_header') %>
+
+  <div class="story-so-far">
   <!-- initial story and title -->
   <h1><%= story[0].story_title %></h1>
   <%= story[0].initial_story %><br><br>
 
   <% for (const arrItem of story) { %>
-    <!-- <%- JSON.stringify(arrItem.block_completed) %> -->
-    <% if (arrItem.block_completed === true && arrItem.story_block_id === arrItem.entry_block && arrItem.winning_entry === true) { %>
-      <!-- check all story entries connected to the block_id and only show the ones that are true -->
-      <%- arrItem.entry_text %><br><br>
-    <% } %>
+  <!-- check all story entries connected to the block_id and only show the ones that are true -->
+  <% if (arrItem.block_completed === true && arrItem.story_block_id === arrItem.entry_block && arrItem.winning_entry === true) { %>
+  <%- arrItem.entry_text %><br><br>
   <% } %>
+  <% } %>
+  <% if (story[story.length - 1].story_completion_status) { %>
+    <h1>END</h1>
+  <% } %>
+  </div>
 
+  <!-- if condition to check if a story isn't complete -->
   <% if (!story[story.length - 1].story_completion_status) { %>
 
+  <a href="/story/<%= story[0].story_id %>/<%= story[story.length - 1].story_block_id %>/entry">
+  <img class="pencil-svg" src="/svgs/pencil_icon.svg" alt="story" width="150px"></a>
 
-
-  <!-- <%- JSON.stringify(story[story.length - 1].story_completion_status) %> -->
-
-  <a href="/story/<%= story[0].story_id %>/<%= story[story.length - 1].story_block_id %>/entry"><img class="pencil-svg" src="/svgs/pencil_icon.svg" alt="story" width="150px"></a><br><br>
-
-
-  <!-- if condition for if last story block is not complete -->
+  <div class="submissions-container">
+  <!-- if condition for if last story block is not complete and the current user is the story owner -->
   <% if (story[story.length - 1].block_completed === false && story[story.length - 1].entry_id !== null && story[0].story_creator === 1) { %>
-  <form method="POST" action="/story/<%= story[0].story_id %>/<%= story[story.length - 1].story_block_id %>/select-winner">
-  <% for (const entry of story) { %>
-  <% if (entry.entry_block === story[story.length - 1].story_block_id) { %>
-  <fieldset>
-  <label><input type="radio" name="entry" value="<%= entry.entry_id %>"> <%- entry.entry_text %></label>
-  <span id="like-counter"><%- entry.upvote_counter %></span>
-  <span id="like-post" data-id="<%= entry.entry_id %>"><i class="fa-solid fa-heart hover-color fa-sm"></i></span><br>
-  </fieldset>
-  <% } %>
-  <% } %>
-  <fieldset>
-  <label><input type="radio" name="completion" value="false"> Continue story?<br></label>
-  <label><input type="radio" name="completion" value="true"> End story here?<br></label>
-  </fieldset>
-  <button>SUBMIT</button>
-  </form>
+    <ul>
+    <form method="POST" action="/story/<%= story[0].story_id %>/<%= story[story.length - 1].story_block_id %>/select-winner">
+    <% for (const entry of story) { %>
+    <% if (entry.entry_block === story[story.length - 1].story_block_id) { %>
 
-  <% } %>
+    <div class="entry-selector">
 
+    <fieldset>
+    <input type="radio" name="entry" value="<%= entry.entry_id %>">
+    </fieldset>
+
+    <li>
+    <%- entry.entry_text %>
+    <div class="like-wrapper">
+    <span id="like-counter<%= entry.entry_id %>"><%- entry.upvote_counter %></span><span id="like-post" data-id="<%= entry.entry_id %>"><i class="fa-solid fa-heart hover-color fa-lg"></i></span>
+    </div>
+    </li>
+
+    </div>
+    <% } %>
+    <% } %>
+
+    <fieldset class="continue-form">
+    <label><input type="radio" name="completion" value="false"> Continue story?<br></label>
+    <label><input type="radio" name="completion" value="true"> End story here?<br></label>
+    </fieldset>
+    <button>SUBMIT</button>
+    </form>
+  <% } %>
+</ul>
+
+  <!-- if condition for if last story block is not complete and the current user is not the story owner -->
   <% if (story[story.length - 1].block_completed === false && story[story.length - 1].entry_id !== null && story[0].story_creator !== 1) { %>
     <ul>
     <% for (const entry of story) { %>
     <% if (entry.entry_block === story[story.length - 1].story_block_id) { %>
     <li>
     <%- entry.entry_text %>
-    <span id="like-counter<%= entry.entry_id %>"><%- entry.upvote_counter %></span>
-    <span id="like-post" data-id="<%= entry.entry_id %>"><i class="fa-solid fa-heart hover-color fa-sm"></i></span><br><br>
+    <div class="like-wrapper">
+    <span id="like-counter<%= entry.entry_id %>"><%- entry.upvote_counter %></span><span id="like-post" data-id="<%= entry.entry_id %>"><i class="fa-solid fa-heart hover-color fa-lg"></i></span>
+    </div>
     </li>
     <% } %>
     <% } %>
     <% } %>
     </ul>
-
   <% } %>
-
-
-
-
-
+  </div>
 
 </div>
 </body>

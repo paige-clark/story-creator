@@ -18,18 +18,20 @@
 </head>
 
 <body>
-  <div class="body-container">
+  <div class="create-container">
+
   <%- include('partials/_header') %>
 
-  <h1>story title</h1>
   <form method="POST" action="/create/new">
-  <input type="text" name="title" placeholder="Enter the title of your story..."/>
-  <h1>write story</h1>
-  <input type="text" name="story" placeholder="Write your story..."/>
-  <button>SUBMIT</button>
+  <h1>story title:</h1>
+  <input class="title-entry" type="text" name="title" placeholder="Enter the title of your story..."/>
+  <h1 class="write-story">write story:</h1>
+  <textarea type="text" name="story" placeholder="Write your story..."></textarea><br><br>
+  <!-- <input type="text" name="story" placeholder="Write your story..."/> -->
+  <input class="pencil-svg" type="image"src="/svgs/pencil_icon.svg" alt="Submit" width="150px"/>
   </form>
 
-</div>
+  </div>
 
 </body>
 
