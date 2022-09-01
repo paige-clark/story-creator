@@ -21,15 +21,23 @@
 </head>
 
 <body>
+  <div class="entry-container">
+
+
+  <div class="left-entry">
   <%- include('partials/_header') %>
   <h1>Write Entry</h1>
   <form method="POST" action="/story/<%= story[0].story_id %>/<%= story[story.length - 1].story_block_id %>/entry/post">
-  <input type="text" name="entry" placeholder="Write your entry..."/>
-  <button>SUBMIT ENTRY</button><br><br>
+  <textarea type="text" name="entry" placeholder="Write your entry..."></textarea><br><br>
+  <input class="pencil-svg" type="image"src="/svgs/pencil_icon.svg" alt="Submit" width="150px"/>
   </form>
+  </div>
 
+
+  <div class="right-entry">
   <!-- initial story and title -->
   <h1><%= story[0].story_title %></h1>
+  <p>
   <%= story[0].initial_story %><br><br>
 
   <% for (const arrItem of story) { %>
@@ -39,7 +47,8 @@
       <%- arrItem.entry_text %><br><br>
     <% } %>
   <% } %>
-
+  </p>
+  </div>
 
 
   <!-- <%- JSON.stringify(story[story.length - 1].story_completion_status) %> -->
@@ -50,6 +59,6 @@
   <!-- if condition for if last story block is not complete -->
 
 
-
+</div>
 </body>
 </html>

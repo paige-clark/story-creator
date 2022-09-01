@@ -6,6 +6,7 @@ const getStoryInfo = (storyID) => {
          stories.title AS story_title,
          stories.initial_story,
          stories.completed AS story_completion_status,
+         stories.user_id AS story_creator,
          story_blocks.id AS story_block_id,
          story_blocks.completed AS block_completed,
          story_entries.id AS entry_id,

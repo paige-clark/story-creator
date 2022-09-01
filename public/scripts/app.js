@@ -1,5 +1,6 @@
 // // Client facing scripts here
 $(() => {
+  console.log($('#like-post').data('id'));
   const entry_id = $('#like-post').data('id');
   $('#like-post').on('click', () => {
     $.ajax({
